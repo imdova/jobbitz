@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Image from "next/image";
+import Background from "@/components/background";
 
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -72,6 +73,7 @@ export default function RootLayout({
             <Image src="/images/logo.jpg" alt="logo" width={80} height={80} />
           </nav>
         </header>
+        <Background />
         {children}
       </body>
     </html>

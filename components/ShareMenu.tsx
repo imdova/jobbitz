@@ -1,11 +1,6 @@
 "use client";
-import { FaXTwitter, FaRegCopy } from "react-icons/fa6";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedin,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaRegCopy } from "react-icons/fa6";
+import { FaFacebookF, FaTelegram, FaWhatsapp } from "react-icons/fa";
 import { LuShare2 } from "react-icons/lu";
 
 import { useEffect, useRef, useState } from "react";
@@ -14,23 +9,20 @@ const ShareMenu: React.FC<{ link: string }> = ({ link }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showCopyAlert, setShowCopyAlert] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(link);
-    setShowCopyAlert(true);
-    setTimeout(() => setShowCopyAlert(false), 3000);
-    setIsMenuOpen(false);
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(link);
+      setShowCopyAlert(true);
+      setTimeout(() => setShowCopyAlert(false), 3000);
+      setIsMenuOpen(false);
+    } catch (error: unknown) {
+      console.log("🚀 ~ handleCopyLink ~ error:", error);
+    }
   };
-
   const shareUrls = {
     whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(link)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-      link
-    )}`,
-    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(link)}`,
+    telegram: `https://t.me/share/url?url=${encodeURIComponent(link)}`,
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-      link
-    )}`,
-    instagram: `https://www.instagram.com/share?url=${encodeURIComponent(
       link
     )}`,
   };
@@ -58,7 +50,7 @@ const ShareMenu: React.FC<{ link: string }> = ({ link }) => {
   }, []);
 
   return (
-    <div className="relative inline-block" ref={menuRef}>
+    <div className="relative inline-block z-50" ref={menuRef}>
       <button
         onClick={() => setIsMenuOpen((prev) => !prev)}
         className=" rounded-full p-2 hover:bg-gray-100 duration-200 "
@@ -67,7 +59,7 @@ const ShareMenu: React.FC<{ link: string }> = ({ link }) => {
       </button>
 
       {isMenuOpen && (
-        <ul className="absolute bg-white border border-gray-200 rounded shadow-md mt-2 w-48 right-0 z-10">
+        <ul className="absolute z-[999] bg-white border border-gray-200 rounded shadow-md mt-2 w-48 right-0">
           <li
             onClick={() => handleShare("whatsapp")}
             className="flex items-center gap-3 px-4 py-2 hover:bg-green-100 cursor-pointer"
@@ -76,18 +68,11 @@ const ShareMenu: React.FC<{ link: string }> = ({ link }) => {
             WhatsApp
           </li>
           <li
-            onClick={() => handleShare("linkedin")}
+            onClick={() => handleShare("telegram")}
             className="flex items-center gap-3 px-4 py-2 hover:bg-blue-100 cursor-pointer"
           >
-            <FaLinkedin className="text-blue-600" />
-            LinkedIn
-          </li>
-          <li
-            onClick={() => handleShare("twitter")}
-            className="flex items-center gap-3 px-4 py-2 hover:bg-sky-100 cursor-pointer"
-          >
-            <FaXTwitter />
-            Twitter
+            <FaTelegram className="text-blue-600" />
+            Telegram
           </li>
           <li
             onClick={() => handleShare("facebook")}
@@ -95,13 +80,6 @@ const ShareMenu: React.FC<{ link: string }> = ({ link }) => {
           >
             <FaFacebookF className="text-blue-600" />
             Facebook
-          </li>
-          <li
-            onClick={() => handleShare("instagram")}
-            className="flex items-center gap-3 px-4 py-2 hover:bg-pink-100 cursor-pointer"
-          >
-            <FaInstagram className="text-pink-600" />
-            Instagram
           </li>
           <li
             onClick={handleCopyLink}
