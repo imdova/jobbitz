@@ -2,8 +2,8 @@ import { Post } from "@/types";
 
 export const posts: Post[] = [
   {
-    image: "/images/image1.jpeg",
-    name: "Consultant Cardiology",
+    image: "/images/poter.jpg",
+    name: "Sales Representative",
     features: [
       "Bachelor Degree",
       "Male&Female",
