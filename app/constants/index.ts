@@ -3,7 +3,7 @@ import { Post } from "@/types";
 export const posts: Post[] = [
   {
     image: "/images/poter.jpg",
-    name: "Sales Representative",
+    name: "Sales and tele-sales Representative",
     features: [
       "Bachelor Degree",
       "Male&Female",
