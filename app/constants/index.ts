@@ -2,7 +2,7 @@ import { Post } from "@/types";
 
 export const posts: Post[] = [
   {
-    image: "/images/poter.jpg",
+    image: "/images/sales.jpg",
     name: "Sales and tele-sales Rep",
     features: [
       "Bachelor Degree",
@@ -18,8 +18,8 @@ export const posts: Post[] = [
     jobTime: "Full Time | On Site",
   },
   {
-    image: "/images/image1.jpeg",
-    name: "Consultant Cardiology",
+    image: "/images/sales team leader.jpg",
+    name: "Sales Team Leader",
     features: [
       "Bachelor Degree",
       "Male&Female",
