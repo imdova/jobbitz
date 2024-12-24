@@ -33,7 +33,7 @@ export const posts: Post[] = [
     jobTime: "Full Time | On Site",
   },
   {
-    image: "/images/key account.jpeg",
+    image: "/images/key account.jpg",
     name: "Key Account Manager",
     features: [
       "Bachelor Degree",
@@ -48,7 +48,7 @@ export const posts: Post[] = [
     jobTime: "Full Time | On Site",
   },
   {
-    image: "/images/social media.jpeg",
+    image: "/images/social media.jpg",
     name: "Social Media Specialist",
     features: [
       "Bachelor Degree",
@@ -63,7 +63,7 @@ export const posts: Post[] = [
     jobTime: "Full Time | On Site",
   },
   {
-    image: "/images/business developer.jpeg",
+    image: "/images/business developer.jpg",
     name: "Business Development Executive",
     features: [
       "Bachelor Degree",
@@ -78,7 +78,7 @@ export const posts: Post[] = [
     jobTime: "Full Time | On Site",
   },
   {
-    image: "/images/hr.jpeg",
+    image: "/images/hr.jpg",
     name: "HR Recruiter",
     features: [
       "Bachelor Degree",
